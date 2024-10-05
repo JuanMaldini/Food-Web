@@ -1,11 +1,35 @@
-import React from 'react'
+import {
+  Card,
+  CardBody,
+  Heading,
+  Text,
+  Image,
+  CardFooter,
+  Button,
+} from "@chakra-ui/react";
+import { Meal } from "../types";
 
-type Props = {}
+type Props = {
+  meal: Meal;
+  openRecipe:() => void;
+};
 
-function FoodCard({}: Props) {
+function FoodCard({ meal, openRecipe }: Props) {
   return (
-    <div>FoodCard</div>
-  )
+    <Card boxShadow="lg">
+      <CardBody>
+        <Image src={meal.strMealThumb} alt={meal.strMeal} borderRadius="lg" />
+        <Heading size="md" color="blue.400">
+          <Text mt="4">{meal.strMeal}</Text>
+        </Heading>
+      </CardBody>
+      <CardFooter pt="0">
+        <Button onClick={openRecipe} color="white" bgColor="blue.400">
+          Ver Receta
+        </Button>
+      </CardFooter>
+    </Card>
+  );
 }
 
-export default FoodCard
+export default FoodCard;
